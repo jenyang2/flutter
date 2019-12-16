@@ -30,33 +30,26 @@ class RandomWordState extends State<RandomWords>{
   final TextStyle _biggerFont = TextStyle(fontSize: 18.0);
   
   Widget _buildSuggestions() {
-    return ListView.builder(
+    return Column(
+      children: [
+      Text('1123213123'),
+      Text('2'),
+      Text('3'),
+      /*ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: /*1*/ (context, i) {
-          if (i.isOdd) return Divider(); /*2*/
-
-          final index = i ~/ 2; /*3*/
-          if (index >= _suggestions.length) {
-            _suggestions.addAll(generateWordPairs().take(10)); /*4*/
+            if (i.isOdd) return Divider(); /*2*/
+            final index = i ~/ 2; /*3*/
+            if (index >= _suggestions.length) {
+              _suggestions.addAll(generateWordPairs().take(10)); /*4*/
+            }
+            return _buildRow(_suggestions[index]);
           }
-          return _buildRow(_suggestions[index]);
-        });
+        ),*/
+      ]
+    );
   }
-// Add the following code in the ChatScreenState class definition.
-void _handleSubmitted(String text) {
-  _textController.clear();
-}
-Widget _buildTextComposer() {
-  return new Container(
-    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-    child: new TextField(
-      controller: _textController,
-      onSubmitted: _handleSubmitted,
-      decoration: new InputDecoration.collapsed(
-        hintText: "Send a message"),
-    ),
-  );
-}
+
   Widget _buildRow(WordPair pair){
     final bool alreadySaved = _saved.contains(pair);
     return ListTile(
